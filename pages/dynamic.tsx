@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import path from 'path'
 
 export default function Dynamic(props) {
@@ -9,15 +9,10 @@ export default function Dynamic(props) {
     )
 }
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-
-    const fs  = require('fs')
-    const txt = fs.readFileSync(path.join(process.cwd(), 'public/robots.txt'), 'utf8')
-
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
         props: {
-            myFavNum: txt
-        },
-        revalidate: 10
+
+        }
     }
 }
